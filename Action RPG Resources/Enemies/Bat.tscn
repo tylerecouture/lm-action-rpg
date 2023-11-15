@@ -44,11 +44,14 @@ height = 6.0
 [node name="Bat" type="KinematicBody2D"]
 collision_layer = 16
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-frame = 1
+frame = 2
 playing = true
 offset = Vector2( 0, -12 )
 
