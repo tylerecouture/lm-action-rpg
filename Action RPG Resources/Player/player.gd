@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+const GrassEffect = preload("res://Action RPG Resources/Effects/GrassEffect.png")
 export var ACCELERATION = 500
 export var MAX_SPEED = 50
 export var ROLL_SPEED = 120
@@ -17,13 +17,15 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.DOWN
+var stats = PlayerStats
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitboxPivot/SwordHitbox
-
+onready var hurtbox = $Hurtbox
 func _ready():
+	stats.connect("no_health", self, "_on_Stats_no_health")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	$HitboxPivot/SwordHitbox/CollisionShape2D.disabled = true
@@ -89,3 +91,20 @@ func roll_animation_finished():
 
 func attack_animation_finished():
 	state = MOVE
+
+
+
+func _on_animation_finished():
+	queue_free()
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -= 1
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()
+
+
+func _on_PlayerStats_no_health():
+	queue_free()
+	var grassEffect = GrassEffect.instance()
+	get_parent().add_child(grassEffect)
+	grassEffect.global_position = global_position - Vector2(0, 0)

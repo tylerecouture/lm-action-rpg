@@ -576,7 +576,7 @@ position = Vector2( 168, 80 )
 position = Vector2( 88, 88 )
 
 [node name="AnimatedSprite" parent="YSort/Bat" index="0"]
-frame = 2
+frame = 3
 
 [node name="Stats" parent="YSort/Bat" index="4"]
 max_health = 1
@@ -585,13 +585,13 @@ max_health = 1
 position = Vector2( 200, 160 )
 
 [node name="AnimatedSprite" parent="YSort/Bat2" index="0"]
-frame = 2
+frame = 3
 
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 248, 80 )
 
 [node name="AnimatedSprite" parent="YSort/Bat3" index="0"]
-frame = 2
+frame = 3
 
 [node name="Stats" parent="YSort/Bat3" index="4"]
 max_health = 3
@@ -599,9 +599,12 @@ max_health = 3
 [editable path="YSort/Bat"]
 [editable path="YSort/Bat/Hurtbox"]
 [editable path="YSort/Bat/PlayerDetectionZone"]
+[editable path="YSort/Bat/Hitbox"]
 [editable path="YSort/Bat2"]
 [editable path="YSort/Bat2/Hurtbox"]
 [editable path="YSort/Bat2/PlayerDetectionZone"]
+[editable path="YSort/Bat2/Hitbox"]
 [editable path="YSort/Bat3"]
 [editable path="YSort/Bat3/Hurtbox"]
 [editable path="YSort/Bat3/PlayerDetectionZone"]
+[editable path="YSort/Bat3/Hitbox"]
